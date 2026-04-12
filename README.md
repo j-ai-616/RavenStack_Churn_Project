@@ -159,6 +159,8 @@ pip install -r requirements.txt
 streamlit run src/app/streamlit_app.py
 ```
 
+---
+
 ## 📝 참고
 
 이 저장소는 개인 프로젝트 정리용 레포지토리이며,
