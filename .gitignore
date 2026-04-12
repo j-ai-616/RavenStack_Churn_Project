@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+*.so
+.DS_Store
+.ipynb_checkpoints/
+.env
+.venv/
+venv/
+.envrc
+
+# data
+data/raw/
+data/interim/
+data/processed/
+
+# keep sample data
+!data/sample/
+!data/sample/README.md
+!data/sample/*.csv
