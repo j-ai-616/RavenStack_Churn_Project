@@ -1,4 +1,4 @@
-# 설명 가능한 AI 기반 SaaS 고객 이탈 예측 및 고객 유지 전략 분석 | J.Son
+# 설명 가능한 AI 기반 SaaS 고객 이탈 예측 및 고객 유지 전략 제안 | J.Son
 
 이 프로젝트는 **RavenStack Synthetic SaaS Dataset**을 활용하여  
 고객 이탈(Churn)을 예측하고, **설명 가능한 AI(XAI)** 를 통해 주요 이탈 요인을 해석한 뒤,  
