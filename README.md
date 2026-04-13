@@ -21,6 +21,7 @@
   - threshold tuning을 통한 운영 기준 탐색
   - 고객 유지 전략 제안
   - Streamlit 대시보드 구현
+- **Streamlit 배포**:https://ravenstack-churn-project.streamlit.app
 
 ---
 
