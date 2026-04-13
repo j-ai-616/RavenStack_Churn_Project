@@ -145,7 +145,7 @@ def render_header() -> None:
         """
         <div class="hero-box">
             <div class="hero-eyebrow">J.Son 머신러닝/딥러닝 프로젝트 · RavenStack Synthetic SaaS Dataset</div>
-            <div class="hero-title">설명 가능한 SaaS 고객 이탈 예측 및 고객 유지 전략 분석</div>
+            <div class="hero-title">설명 가능한 AI 기반 SaaS 고객 이탈 예측 및 고객 유지 전략 분석</div>
             <div class="hero-desc">
                 단순히 churn을 맞히는 데서 멈추지 않고, 
                 <b>어떤 고객이 왜 이탈 위험이 높은지</b>를 해석하고 
