@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import pandas as pd
+import plotly.express as px
 import streamlit as st
 
 from src.app.utils.load_data import (
@@ -32,6 +33,51 @@ def _center_note(text: str) -> None:
         """,
         unsafe_allow_html=True,
     )
+
+
+def _plot_metric_curve(
+    df: pd.DataFrame,
+    metric_col: str,
+    title: str,
+    y_label: str,
+) -> None:
+    """
+    threshold_metrics_all_models 형태의 long dataframe을 받아
+    Plotly 선그래프로 렌더링한다.
+    """
+    required_cols = {"threshold", "model", metric_col}
+    if df.empty or not required_cols.issubset(df.columns):
+        st.info(f"{metric_col} 그래프를 그릴 수 있는 데이터가 없습니다.")
+        return
+
+    plot_df = (
+        df[["threshold", "model", metric_col]]
+        .dropna()
+        .copy()
+        .sort_values(["model", "threshold"])
+    )
+
+    if plot_df.empty:
+        st.info(f"{metric_col} 그래프를 그릴 수 있는 유효 데이터가 없습니다.")
+        return
+
+    fig = px.line(
+        plot_df,
+        x="threshold",
+        y=metric_col,
+        color="model",
+        markers=True,
+        title=title,
+    )
+
+    fig.update_layout(
+        xaxis_title="Threshold",
+        yaxis_title=y_label,
+        legend_title="Model",
+        margin=dict(l=20, r=20, t=60, b=20),
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
 
 
 def render() -> None:
@@ -105,26 +151,37 @@ def render() -> None:
         if threshold_df.empty:
             st.info("threshold_metrics_all_models.csv 파일이 없습니다.")
         else:
-            pivot_f1 = threshold_df.pivot(index="threshold", columns="model", values="f1")
-            pivot_precision = threshold_df.pivot(index="threshold", columns="model", values="precision")
-            pivot_recall = threshold_df.pivot(index="threshold", columns="model", values="recall")
-
             st.markdown("### F1 변화")
-            st.line_chart(pivot_f1, use_container_width=True)
+            _plot_metric_curve(
+                df=threshold_df,
+                metric_col="f1",
+                title="Threshold 변화에 따른 F1",
+                y_label="F1 Score",
+            )
             _center_note(
                 "이 그래프는 threshold 변화에 따라 F1이 어떻게 달라지는지를 보여준다. "
                 "즉, precision과 recall의 균형이 가장 잘 맞는 지점을 찾기 위해 확인하는 그래프라고 해석할 수 있다."
             )
 
             st.markdown("### Precision 변화")
-            st.line_chart(pivot_precision, use_container_width=True)
+            _plot_metric_curve(
+                df=threshold_df,
+                metric_col="precision",
+                title="Threshold 변화에 따른 Precision",
+                y_label="Precision",
+            )
             _center_note(
                 "이 그래프는 threshold 변화에 따라 precision이 어떻게 달라지는지를 보여준다. "
                 "threshold를 높일수록 일반적으로 precision은 높아질 수 있지만, 그만큼 실제 이탈 고객을 놓칠 가능성도 함께 커질 수 있다."
             )
 
             st.markdown("### Recall 변화")
-            st.line_chart(pivot_recall, use_container_width=True)
+            _plot_metric_curve(
+                df=threshold_df,
+                metric_col="recall",
+                title="Threshold 변화에 따른 Recall",
+                y_label="Recall",
+            )
             _center_note(
                 "이 그래프는 threshold 변화에 따라 recall이 어떻게 달라지는지를 보여준다. "
                 "실무적으로 churn 문제에서는 실제 이탈 고객을 놓치지 않는 것이 중요하므로, recall의 변화는 운영 기준을 정할 때 특히 중요한 판단 근거가 된다."
