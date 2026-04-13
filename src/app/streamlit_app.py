@@ -299,7 +299,7 @@ def render_header() -> None:
             """
             <div class="hero-box">
                 <div class="hero-eyebrow">
-                    J.Son · 머신러닝/딥러닝 프로젝트 · RavenStack Synthetic SaaS Dataset
+                    손지은 · 머신러닝/딥러닝 프로젝트 · RavenStack Synthetic SaaS Dataset
                 </div>
                 <div class="hero-title">
                     설명 가능한 AI 기반 SaaS 고객 이탈 예측 및 고객 유지 전략 분석
