@@ -7,8 +7,18 @@ from typing import Any
 import joblib
 import pandas as pd
 import streamlit as st
-import torch
-import torch.nn as nn
+
+# -----------------------------------
+# torch 선택 import
+# -----------------------------------
+try:
+    import torch
+    import torch.nn as nn
+    TORCH_AVAILABLE = True
+except ModuleNotFoundError:
+    torch = None
+    nn = None
+    TORCH_AVAILABLE = False
 
 
 # -----------------------------------
@@ -32,22 +42,27 @@ except ImportError:
 # -----------------------------------
 # DL 모델 정의
 # -----------------------------------
-class MLP(nn.Module):
-    def __init__(self, input_dim: int):
-        super().__init__()
-        self.model = nn.Sequential(
-            nn.Linear(input_dim, 64),
-            nn.ReLU(),
-            nn.Dropout(0.3),
-            nn.Linear(64, 32),
-            nn.ReLU(),
-            nn.Dropout(0.2),
-            nn.Linear(32, 1),
-            nn.Sigmoid(),
-        )
+if TORCH_AVAILABLE:
+    class MLP(nn.Module):
+        def __init__(self, input_dim: int):
+            super().__init__()
+            self.model = nn.Sequential(
+                nn.Linear(input_dim, 64),
+                nn.ReLU(),
+                nn.Dropout(0.3),
+                nn.Linear(64, 32),
+                nn.ReLU(),
+                nn.Dropout(0.2),
+                nn.Linear(32, 1),
+                nn.Sigmoid(),
+            )
 
-    def forward(self, x):
-        return self.model(x)
+        def forward(self, x):
+            return self.model(x)
+else:
+    class MLP:
+        def __init__(self, input_dim: int):
+            raise RuntimeError("torch is not available in this deployment environment.")
 
 
 # -----------------------------------
@@ -181,7 +196,10 @@ def _load_dl_scaler() -> Any | None:
         return None
 
 
-def load_dl_model() -> nn.Module | None:
+def load_dl_model() -> Any | None:
+    if not TORCH_AVAILABLE:
+        return None
+
     model_path = MODELS_OUTPUT_DIR / "dl_model.pth"
     feature_names = _load_dl_feature_columns()
 
@@ -252,6 +270,9 @@ def predict_rf_row(row: pd.DataFrame) -> float | None:
 
 
 def predict_dl_row(row: pd.DataFrame) -> float | None:
+    if not TORCH_AVAILABLE:
+        return None
+
     dl_model = load_dl_model()
     scaler = _load_dl_scaler()
     feature_names = _load_dl_feature_columns()
@@ -321,7 +342,7 @@ def build_prediction_comparison() -> pd.DataFrame:
     dl_scaler = _load_dl_scaler()
     dl_feature_names = _load_dl_feature_columns()
 
-    if dl_model is not None and dl_scaler is not None and dl_feature_names:
+    if TORCH_AVAILABLE and dl_model is not None and dl_scaler is not None and dl_feature_names:
         try:
             X_dl = _prepare_numeric_features(X_test)
             missing_cols = [c for c in dl_feature_names if c not in X_dl.columns]
