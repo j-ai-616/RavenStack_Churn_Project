@@ -210,7 +210,7 @@ def render() -> None:
             st.markdown(
                 f"""
                 <div class="section-card">
-                    <h4 style="margin-top:0;">발표용 결론</h4>
+                    <h4 style="margin-top:0;">결론</h4>
                     <p style="line-height:1.8; margin-bottom:0;">
                     본 프로젝트에서는 <b>{top_tuned['model']}</b>이(가)
                     threshold <b>{top_tuned['threshold']:.2f}</b>에서
