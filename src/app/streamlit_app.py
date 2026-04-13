@@ -19,7 +19,7 @@ from src.utils.plot_utils import set_korean_font
 set_korean_font()
 
 st.set_page_config(
-    page_title="설명 가능한 SaaS 고객 이탈 예측 및 고객 유지 전략 분석",
+    page_title="설명 가능한 AI 기반 SaaS 고객 이탈 예측 및 고객 유지 전략 분석",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded",
