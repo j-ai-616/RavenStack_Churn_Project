@@ -115,7 +115,7 @@ SaaS 환경에서는 고객 이탈을 사후적으로 확인하는 것보다,
         )
     with row2_col2:
         _card(
-            "발표 흐름",
+            "전체 흐름",
             """
 <ol style="line-height:1.9; margin-bottom:0; padding-left:1.2rem;">
     <li>EDA로 churn 고객 특성 확인</li>
