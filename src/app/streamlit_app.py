@@ -34,7 +34,7 @@ except ImportError:
 # 페이지 기본 설정
 # ------------------------------------------------------
 st.set_page_config(
-    page_title="설명 가능한 AI 기반 SaaS 고객 이탈 예측 및 고객 유지 전략 분석",
+    page_title="손지은",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -47,7 +47,6 @@ def apply_global_settings() -> None:
         try:
             set_korean_font()
         except Exception:
-            # 폰트 설정 실패 시 앱 전체가 죽지 않도록 방어
             pass
 
 
@@ -72,11 +71,16 @@ def inject_custom_css() -> None:
             [data-testid="stSidebar"] {
                 min-width: 300px;
                 max-width: 300px;
-                border-right: 1px solid #eef2f7;
+                background: linear-gradient(180deg, #e7f3ee 0%, #dcefe7 100%);
+                border-right: 1px solid #b7d3c6;
             }
 
             [data-testid="stSidebarCollapsedControl"] {
                 display: none;
+            }
+
+            [data-testid="stSidebar"] .block-container {
+                padding-top: 2.1rem;
             }
 
             /* --------------------------------------------------
@@ -87,7 +91,7 @@ def inject_custom_css() -> None:
             }
 
             h1, h2, h3, h4 {
-                color: #111827;
+                color: #16382d;
                 letter-spacing: -0.01em;
             }
 
@@ -95,18 +99,20 @@ def inject_custom_css() -> None:
                Hero
             -------------------------------------------------- */
             .hero-box {
-                background: linear-gradient(135deg, #0f172a 0%, #23344d 52%, #334155 100%);
-                color: #ffffff;
+                background: linear-gradient(135deg, #0d2f26 0%, #114437 48%, #1a5a49 100%);
+                color: #f5fffb;
                 padding: 2.1rem 2rem 1.7rem 2rem;
                 border-radius: 24px;
                 margin-top: 0.2rem;
                 margin-bottom: 1.6rem;
-                box-shadow: 0 14px 36px rgba(15, 23, 42, 0.16);
+                box-shadow: 0 14px 36px rgba(13, 47, 38, 0.22);
+                border: 1px solid rgba(173, 231, 205, 0.16);
             }
 
             .hero-eyebrow {
                 font-size: 0.95rem;
-                opacity: 0.86;
+                color: #c8efe0;
+                opacity: 0.95;
                 margin-bottom: 0.45rem;
                 line-height: 1.5;
             }
@@ -117,11 +123,13 @@ def inject_custom_css() -> None:
                 line-height: 1.3;
                 margin-bottom: 0.7rem;
                 letter-spacing: -0.02em;
+                color: #f3fff9;
             }
 
             .hero-desc {
                 font-size: 1.02rem;
-                opacity: 0.94;
+                color: #e3f8ef;
+                opacity: 0.96;
                 line-height: 1.8;
                 margin: 0;
             }
@@ -130,8 +138,8 @@ def inject_custom_css() -> None:
                공통 카드
             -------------------------------------------------- */
             .section-card {
-                background: #f8fafc;
-                border: 1px solid #e2e8f0;
+                background: #f5fbf8;
+                border: 1px solid #d5e7de;
                 border-radius: 18px;
                 padding: 1.15rem 1.2rem;
                 margin-bottom: 1rem;
@@ -141,10 +149,10 @@ def inject_custom_css() -> None:
 
             .mini-card {
                 background: #ffffff;
-                border: 1px solid #e5e7eb;
+                border: 1px solid #d8e5de;
                 border-radius: 16px;
                 padding: 1rem 1rem 0.85rem 1rem;
-                box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+                box-shadow: 0 4px 16px rgba(17, 68, 55, 0.06);
                 box-sizing: border-box;
                 margin-bottom: 1rem;
                 overflow: hidden;
@@ -155,7 +163,7 @@ def inject_custom_css() -> None:
             }
 
             .mini-label {
-                color: #64748b;
+                color: #547567;
                 font-size: 0.9rem;
                 font-weight: 600;
                 margin-bottom: 0.25rem;
@@ -165,14 +173,14 @@ def inject_custom_css() -> None:
             .mini-value {
                 font-size: 2rem;
                 font-weight: 800;
-                color: #0f172a;
+                color: #12392f;
                 line-height: 1.15;
                 margin-bottom: 0.2rem;
                 letter-spacing: -0.02em;
             }
 
             .mini-sub {
-                color: #64748b;
+                color: #5d7d70;
                 font-size: 0.9rem;
                 line-height: 1.45;
             }
@@ -180,7 +188,7 @@ def inject_custom_css() -> None:
             .feature-card-title {
                 font-size: 1.15rem;
                 font-weight: 800;
-                color: #0f172a;
+                color: #12392f;
                 line-height: 1.35;
                 margin-top: 0.55rem;
                 word-break: break-word;
@@ -193,35 +201,114 @@ def inject_custom_css() -> None:
             .sidebar-title {
                 font-size: 1.05rem;
                 font-weight: 800;
-                color: #111827;
+                color: #16382d;
                 margin-bottom: 0.35rem;
             }
 
             .sidebar-sub {
-                color: #64748b;
+                color: #4f6f63;
                 font-size: 0.89rem;
                 line-height: 1.55;
                 margin-bottom: 1rem;
             }
 
             .flow-box {
-                background: #f8fafc;
-                border: 1px solid #e2e8f0;
+                background: rgba(255, 255, 255, 0.55);
+                border: 1px solid #bfd8cc;
                 border-radius: 14px;
                 padding: 0.95rem 1rem;
                 margin-top: 1rem;
                 line-height: 1.85;
-                color: #334155;
+                color: #2d5144;
                 font-size: 0.92rem;
+                box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
             }
 
             /* --------------------------------------------------
-               Streamlit 기본 요소 보정
+               Streamlit radio - 사이드바 네비게이션
+               - 기본 동그라미 숨김
+               - 선택 항목을 pill 스타일로 강조
             -------------------------------------------------- */
             .stRadio > div {
-                gap: 0.65rem;
+                gap: 0.7rem;
             }
 
+            div[role="radiogroup"] {
+                display: flex;
+                flex-direction: column;
+                gap: 0.28rem;
+            }
+
+            div[role="radiogroup"] label {
+                padding: 0 !important;
+                margin: 0 !important;
+                background: transparent !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+
+            div[role="radiogroup"] label:hover {
+                background: transparent !important;
+            }
+
+            /* 기본 라디오 원 숨기기 */
+            div[role="radiogroup"] input[type="radio"] {
+                position: absolute !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
+
+            /* wrapper */
+            div[role="radiogroup"] label > div {
+                background: transparent !important;
+                box-shadow: none !important;
+                border-radius: 12px !important;
+                padding: 0.05rem 0 !important;
+                transition: all 0.18s ease;
+            }
+
+            div[role="radiogroup"] [data-testid="stMarkdownContainer"] {
+                background: transparent !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            div[role="radiogroup"] p {
+                display: inline-block !important;
+                margin: 0 !important;
+                padding: 0.38rem 0.72rem !important;
+                border-radius: 10px !important;
+                background: transparent !important;
+                color: #1f4035 !important;
+                font-weight: 700 !important;
+                line-height: 1.4 !important;
+                transition: all 0.18s ease;
+            }
+
+            div[role="radiogroup"] label:hover p {
+                background: rgba(24, 94, 75, 0.08) !important;
+                color: #184d3f !important;
+            }
+
+            div[role="radiogroup"] label:has(input:checked) p {
+                background: #1f6f5c !important;
+                color: #ffffff !important;
+                box-shadow: 0 2px 8px rgba(31, 111, 92, 0.18) !important;
+            }
+
+            div[role="radiogroup"] label:has(input:checked) p::before {
+                content: "●";
+                display: inline-block;
+                margin-right: 0.45rem;
+                font-size: 0.72rem;
+                vertical-align: middle;
+                color: #d7f4ea;
+            }
+
+            /* --------------------------------------------------
+               Tabs / DataFrame / Expander
+            -------------------------------------------------- */
             .stTabs [data-baseweb="tab-list"] {
                 gap: 0.4rem;
             }
@@ -236,12 +323,9 @@ def inject_custom_css() -> None:
                 overflow: hidden;
             }
 
-            /* --------------------------------------------------
-               expander / info / metric 느낌 정리
-            -------------------------------------------------- */
             div[data-testid="stExpander"] {
                 border-radius: 14px;
-                border: 1px solid #e5e7eb;
+                border: 1px solid #d8e5de;
                 overflow: hidden;
             }
 
