@@ -7,17 +7,15 @@
 단일 테이블 예측 문제가 아니라,  
 `accounts`, `subscriptions`, `feature_usage`, `support_tickets` 등 **서로 다른 grain을 갖는 다중 테이블 구조**를 실제 비즈니스 의사결정 단위인 **account 수준으로 통합**했다는 점이 이 프로젝트의 핵심이다.
 
-| 항목 | 내용 |
-|------|------|
-| 주제 | 설명 가능한 SaaS 고객 이탈 예측 및 고객 유지 전략 분석 |
-| 데이터셋 | RavenStack Synthetic SaaS Dataset |
-| 분석 단위 | account 기준 (500개) |
-| 입력 변수 수 | 74개 |
-| 타깃 변수 | `churn_flag` |
-| Churn 비율 | 22.0% |
-| 운영 최적 threshold | 0.45 |
-| 최고 F1 | 0.433 |
-| 배포 | [🔗 Streamlit 대시보드](https://ravenstack-churn-project.streamlit.app) |
+- 주제: 설명 가능한 SaaS 고객 이탈 예측 및 고객 유지 전략 분석
+- 데이터셋: RavenStack Synthetic SaaS Dataset
+- 분석 단위: account 기준 (500개)
+- 입력 변수 수: 74개
+- 타깃 변수: `churn_flag`
+- Churn 비율: 22.0%
+- 운영 최적 threshold: 0.45
+- 최고 F1: 0.433
+- 배포: [🔗 Streamlit 대시보드](https://ravenstack-churn-project.streamlit.app)
 
 ---
 
