@@ -383,7 +383,7 @@ def render_header() -> None:
             """
             <div class="hero-box">
                 <div class="hero-title">
-                    설명 가능한 AI 기반 SaaS 고객 이탈 예측 및 고객 유지 전략 분석
+                    Kaggle 데이터를 활용한 XAI 기반 고객 이탈 예측 프로젝트
                 </div>
                 <p class="hero-desc">
                     단순히 churn을 맞히는 데서 멈추지 않고,
