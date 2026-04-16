@@ -167,13 +167,13 @@ def _build_feature_explanation_table(summary: pd.DataFrame) -> pd.DataFrame:
     df = summary.copy()
     df["중요도"] = df["mean_abs_shap"].round(4)
     df["한글 변수명"] = df["feature"].apply(
-        lambda x: FEATURE_KR_MAP.get(x, {}).get("label", "설명 준비 중")
+        lambda x: FEATURE_KR_MAP.get(x, {}).get("label", "-")
     )
     df["한글 설명"] = df["feature"].apply(
-        lambda x: FEATURE_KR_MAP.get(x, {}).get("desc", "")
+        lambda x: FEATURE_KR_MAP.get(x, {}).get("desc", "-")
     )
     df["해석 포인트"] = df["feature"].apply(
-        lambda x: FEATURE_KR_MAP.get(x, {}).get("point", "이 변수의 해석 포인트를 추가해주세요.")
+        lambda x: FEATURE_KR_MAP.get(x, {}).get("point", "-")
     )
 
     df = df.rename(columns={"feature": "feature 원문"})
