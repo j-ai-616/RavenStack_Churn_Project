@@ -170,7 +170,7 @@ def _build_feature_explanation_table(summary: pd.DataFrame) -> pd.DataFrame:
         lambda x: FEATURE_KR_MAP.get(x, {}).get("label", "설명 준비 중")
     )
     df["한글 설명"] = df["feature"].apply(
-        lambda x: FEATURE_KR_MAP.get(x, {}).get("desc", "해당 변수 설명을 추가해주세요.")
+        lambda x: FEATURE_KR_MAP.get(x, {}).get("desc", "")
     )
     df["해석 포인트"] = df["feature"].apply(
         lambda x: FEATURE_KR_MAP.get(x, {}).get("point", "이 변수의 해석 포인트를 추가해주세요.")
