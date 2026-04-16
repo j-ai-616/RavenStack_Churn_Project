@@ -75,10 +75,6 @@ def inject_custom_css() -> None:
                 border-right: 1px solid #b7d3c6;
             }
 
-            [data-testid="stSidebarCollapsedControl"] {
-                display: none;
-            }
-
             [data-testid="stSidebar"] .block-container {
                 padding-top: 2.1rem;
             }
