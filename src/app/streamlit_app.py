@@ -57,12 +57,32 @@ def inject_custom_css() -> None:
             """
             <style>
             /* --------------------------------------------------
-               전체 레이아웃
+               전체 기본
             -------------------------------------------------- */
+            html, body, [class*="css"] {
+                word-break: keep-all;
+            }
+
+            .stApp {
+                background:
+                    radial-gradient(circle at top right, rgba(173, 205, 227, 0.20), transparent 28%),
+                    linear-gradient(180deg, #f7fafc 0%, #f4f8fb 100%);
+            }
+
             .block-container {
-                padding-top: 2.8rem;
+                padding-top: 2.65rem;
                 padding-bottom: 2.2rem;
                 max-width: 1240px;
+            }
+
+            h1, h2, h3, h4 {
+                color: #2b3137;
+                letter-spacing: -0.01em;
+                font-weight: 800;
+            }
+
+            p, li, div {
+                color: #4d6377;
             }
 
             /* --------------------------------------------------
@@ -71,87 +91,117 @@ def inject_custom_css() -> None:
             [data-testid="stSidebar"] {
                 min-width: 300px;
                 max-width: 300px;
-                background: linear-gradient(180deg, #e7f3ee 0%, #dcefe7 100%);
-                border-right: 1px solid #b7d3c6;
+                background:
+                    linear-gradient(180deg, #eef5fa 0%, #e7f1f8 55%, #e3eef6 100%);
+                border-right: 1px solid #d5e3ee;
             }
 
             [data-testid="stSidebar"] .block-container {
-                padding-top: 2.1rem;
-            }
-
-            /* --------------------------------------------------
-               기본 타이포
-            -------------------------------------------------- */
-            html, body, [class*="css"] {
-                word-break: keep-all;
-            }
-
-            h1, h2, h3, h4 {
-                color: #16382d;
-                letter-spacing: -0.01em;
+                padding-top: 2.05rem;
+                padding-bottom: 1.5rem;
             }
 
             /* --------------------------------------------------
                Hero
             -------------------------------------------------- */
             .hero-box {
-                background: linear-gradient(135deg, #0d2f26 0%, #114437 48%, #1a5a49 100%);
-                color: #f5fffb;
-                padding: 2.1rem 2rem 1.7rem 2rem;
-                border-radius: 24px;
-                margin-top: 0.2rem;
-                margin-bottom: 1.6rem;
-                box-shadow: 0 14px 36px rgba(13, 47, 38, 0.22);
-                border: 1px solid rgba(173, 231, 205, 0.16);
+                position: relative;
+                overflow: hidden;
+                background:
+                    linear-gradient(135deg, #8eb7d1 0%, #a4c4db 42%, #c8dcea 100%);
+                color: #ffffff;
+                padding: 2.2rem 2rem 1.8rem 2rem;
+                border-radius: 28px;
+                margin-top: 0.15rem;
+                margin-bottom: 1.45rem;
+                box-shadow: 0 18px 40px rgba(123, 164, 195, 0.20);
+                border: 1px solid rgba(255, 255, 255, 0.42);
+            }
+
+            .hero-box::before {
+                content: "";
+                position: absolute;
+                top: -38px;
+                right: -12px;
+                width: 220px;
+                height: 220px;
+                background: radial-gradient(circle, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.02) 70%);
+                pointer-events: none;
+            }
+
+            .hero-box::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 7px;
+                background: linear-gradient(90deg, rgba(255,255,255,0.00), rgba(255,255,255,0.55), rgba(255,255,255,0.00));
+                opacity: 0.75;
             }
 
             .hero-eyebrow {
-                font-size: 0.95rem;
-                color: #c8efe0;
+                font-size: 0.92rem;
+                color: #edf6fb;
                 opacity: 0.95;
                 margin-bottom: 0.45rem;
                 line-height: 1.5;
+                font-weight: 700;
+                letter-spacing: 0.01em;
             }
 
             .hero-title {
-                font-size: 2.15rem;
-                font-weight: 800;
-                line-height: 1.3;
+                position: relative;
+                z-index: 1;
+                font-size: 2.18rem;
+                font-weight: 900;
+                line-height: 1.28;
                 margin-bottom: 0.7rem;
-                letter-spacing: -0.02em;
-                color: #f3fff9;
+                letter-spacing: -0.025em;
+                color: #ffffff;
             }
 
             .hero-desc {
-                font-size: 1.02rem;
-                color: #e3f8ef;
-                opacity: 0.96;
-                line-height: 1.8;
+                position: relative;
+                z-index: 1;
+                font-size: 1.01rem;
+                color: #f5fafd;
+                opacity: 0.98;
+                line-height: 1.82;
                 margin: 0;
+                max-width: 920px;
             }
 
             /* --------------------------------------------------
                공통 카드
             -------------------------------------------------- */
             .section-card {
-                background: #f5fbf8;
-                border: 1px solid #d5e7de;
-                border-radius: 18px;
+                background: linear-gradient(180deg, #fbfdff 0%, #f8fbfd 100%);
+                border: 1px solid #dce8f1;
+                border-radius: 20px;
                 padding: 1.15rem 1.2rem;
                 margin-bottom: 1rem;
                 box-sizing: border-box;
                 overflow: hidden;
+                box-shadow: 0 8px 20px rgba(154, 183, 204, 0.08);
             }
 
             .mini-card {
-                background: #ffffff;
-                border: 1px solid #d8e5de;
-                border-radius: 16px;
+                background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+                border: 1px solid #dde8f1;
+                border-radius: 18px;
                 padding: 1rem 1rem 0.85rem 1rem;
-                box-shadow: 0 4px 16px rgba(17, 68, 55, 0.06);
+                box-shadow: 0 8px 18px rgba(140, 172, 195, 0.10);
                 box-sizing: border-box;
                 margin-bottom: 1rem;
                 overflow: hidden;
+                transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+            }
+
+            .mini-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 14px 26px rgba(140, 172, 195, 0.16);
+                border-color: #cfddea;
             }
 
             .equal-card {
@@ -159,32 +209,32 @@ def inject_custom_css() -> None:
             }
 
             .mini-label {
-                color: #547567;
-                font-size: 0.9rem;
-                font-weight: 600;
-                margin-bottom: 0.25rem;
+                color: #7a97ad;
+                font-size: 0.89rem;
+                font-weight: 700;
+                margin-bottom: 0.28rem;
                 line-height: 1.45;
             }
 
             .mini-value {
                 font-size: 2rem;
-                font-weight: 800;
-                color: #12392f;
-                line-height: 1.15;
-                margin-bottom: 0.2rem;
-                letter-spacing: -0.02em;
+                font-weight: 900;
+                color: #2c2f33;
+                line-height: 1.12;
+                margin-bottom: 0.22rem;
+                letter-spacing: -0.025em;
             }
 
             .mini-sub {
-                color: #5d7d70;
+                color: #7f99ae;
                 font-size: 0.9rem;
-                line-height: 1.45;
+                line-height: 1.5;
             }
 
             .feature-card-title {
-                font-size: 1.15rem;
+                font-size: 1.14rem;
                 font-weight: 800;
-                color: #12392f;
+                color: #2f3338;
                 line-height: 1.35;
                 margin-top: 0.55rem;
                 word-break: break-word;
@@ -196,34 +246,40 @@ def inject_custom_css() -> None:
             -------------------------------------------------- */
             .sidebar-title {
                 font-size: 1.05rem;
-                font-weight: 800;
-                color: #16382d;
+                font-weight: 900;
+                color: #5f92b8;
                 margin-bottom: 0.35rem;
+                letter-spacing: -0.01em;
             }
 
             .sidebar-sub {
-                color: #4f6f63;
+                color: #7b96ab;
                 font-size: 0.89rem;
-                line-height: 1.55;
+                line-height: 1.58;
                 margin-bottom: 1rem;
             }
 
             .flow-box {
-                background: rgba(255, 255, 255, 0.55);
-                border: 1px solid #bfd8cc;
-                border-radius: 14px;
+                background: rgba(255, 255, 255, 0.68);
+                border: 1px solid #d4e3ed;
+                border-radius: 16px;
                 padding: 0.95rem 1rem;
                 margin-top: 1rem;
-                line-height: 1.85;
-                color: #2d5144;
+                line-height: 1.88;
+                color: #6d8ca5;
                 font-size: 0.92rem;
-                box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+                box-shadow:
+                    inset 0 1px 0 rgba(255,255,255,0.38),
+                    0 6px 18px rgba(151, 181, 203, 0.08);
+                backdrop-filter: blur(4px);
+            }
+
+            .flow-box b {
+                color: #4d6f8c;
             }
 
             /* --------------------------------------------------
-               Streamlit radio - 사이드바 네비게이션
-               - 기본 동그라미 숨김
-               - 선택 항목을 pill 스타일로 강조
+               사이드바 라디오 네비게이션
             -------------------------------------------------- */
             .stRadio > div {
                 gap: 0.7rem;
@@ -232,7 +288,7 @@ def inject_custom_css() -> None:
             div[role="radiogroup"] {
                 display: flex;
                 flex-direction: column;
-                gap: 0.28rem;
+                gap: 0.3rem;
             }
 
             div[role="radiogroup"] label {
@@ -247,14 +303,12 @@ def inject_custom_css() -> None:
                 background: transparent !important;
             }
 
-            /* 기본 라디오 원 숨기기 */
             div[role="radiogroup"] input[type="radio"] {
                 position: absolute !important;
                 opacity: 0 !important;
                 pointer-events: none !important;
             }
 
-            /* wrapper */
             div[role="radiogroup"] label > div {
                 background: transparent !important;
                 box-shadow: none !important;
@@ -273,24 +327,27 @@ def inject_custom_css() -> None:
             div[role="radiogroup"] p {
                 display: inline-block !important;
                 margin: 0 !important;
-                padding: 0.38rem 0.72rem !important;
-                border-radius: 10px !important;
+                padding: 0.42rem 0.78rem !important;
+                border-radius: 11px !important;
                 background: transparent !important;
-                color: #1f4035 !important;
-                font-weight: 700 !important;
+                color: #6f90a9 !important;
+                font-weight: 800 !important;
                 line-height: 1.4 !important;
                 transition: all 0.18s ease;
+                border: 1px solid transparent !important;
             }
 
             div[role="radiogroup"] label:hover p {
-                background: rgba(24, 94, 75, 0.08) !important;
-                color: #184d3f !important;
+                background: rgba(143, 181, 210, 0.11) !important;
+                color: #5f92b8 !important;
+                border: 1px solid rgba(143, 181, 210, 0.12) !important;
             }
 
             div[role="radiogroup"] label:has(input:checked) p {
-                background: #1f6f5c !important;
+                background: linear-gradient(135deg, #8bb5d1 0%, #9ec2db 100%) !important;
                 color: #ffffff !important;
-                box-shadow: 0 2px 8px rgba(31, 111, 92, 0.18) !important;
+                box-shadow: 0 6px 14px rgba(143, 181, 210, 0.20) !important;
+                border: 1px solid rgba(255,255,255,0.20) !important;
             }
 
             div[role="radiogroup"] label:has(input:checked) p::before {
@@ -299,34 +356,109 @@ def inject_custom_css() -> None:
                 margin-right: 0.45rem;
                 font-size: 0.72rem;
                 vertical-align: middle;
-                color: #d7f4ea;
+                color: #eef6fb;
             }
 
             /* --------------------------------------------------
-               Tabs / DataFrame / Expander
+               버튼 / 입력 / 선택 UI
+            -------------------------------------------------- */
+            .stButton > button {
+                border-radius: 12px;
+                border: 1px solid #d7e4ee;
+                background: linear-gradient(180deg, #ffffff 0%, #f6f9fc 100%);
+                color: #4f6d89;
+                font-weight: 700;
+                box-shadow: 0 4px 12px rgba(145, 175, 198, 0.08);
+            }
+
+            .stButton > button:hover {
+                border-color: #b9d0e0;
+                color: #3f6483;
+                box-shadow: 0 8px 18px rgba(145, 175, 198, 0.14);
+            }
+
+            .stSelectbox > div > div,
+            .stMultiSelect > div > div,
+            .stTextInput > div > div > input,
+            .stNumberInput input,
+            .stTextArea textarea {
+                border-radius: 12px !important;
+                border-color: #d7e4ee !important;
+            }
+
+            /* --------------------------------------------------
+               Tabs / DataFrame / Expander / Alert
             -------------------------------------------------- */
             .stTabs [data-baseweb="tab-list"] {
-                gap: 0.4rem;
+                gap: 0.42rem;
+                padding-bottom: 0.15rem;
             }
 
             .stTabs [data-baseweb="tab"] {
-                padding-left: 0.65rem;
-                padding-right: 0.65rem;
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+                border-radius: 11px 11px 0 0;
+                color: #6f8ea7;
+                font-weight: 700;
+            }
+
+            .stTabs [aria-selected="true"] {
+                color: #4f6f8d !important;
+                background: rgba(157, 193, 218, 0.12) !important;
             }
 
             div[data-testid="stDataFrame"] {
                 border-radius: 14px;
                 overflow: hidden;
+                border: 1px solid #dee9f2;
+                box-shadow: 0 6px 16px rgba(151, 181, 203, 0.08);
             }
 
             div[data-testid="stExpander"] {
                 border-radius: 14px;
-                border: 1px solid #d8e5de;
+                border: 1px solid #dce8f1;
                 overflow: hidden;
+                box-shadow: 0 6px 16px rgba(151, 181, 203, 0.07);
+            }
+
+            div[data-testid="stExpander"] summary {
+                background: linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
             }
 
             div[data-testid="stInfo"] {
                 border-radius: 14px;
+                border: 1px solid #d7e5ef;
+                background: #f5f9fc;
+            }
+
+            div[data-testid="stMetric"] {
+                background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+                border: 1px solid #dce8f1;
+                padding: 0.75rem 0.9rem;
+                border-radius: 16px;
+                box-shadow: 0 8px 18px rgba(151, 181, 203, 0.08);
+            }
+
+            /* --------------------------------------------------
+               Plotly / Charts 주변 여백 정리
+            -------------------------------------------------- */
+            [data-testid="stPlotlyChart"] {
+                background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+                border: 1px solid #dce8f1;
+                border-radius: 18px;
+                padding: 0.45rem 0.45rem 0.2rem 0.45rem;
+                box-shadow: 0 8px 18px rgba(151, 181, 203, 0.08);
+            }
+
+            /* --------------------------------------------------
+               구분선
+            -------------------------------------------------- */
+            hr {
+                border: none;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, #d7e4ee, transparent);
+                margin-top: 1.2rem;
+                margin-bottom: 1.2rem;
             }
 
             /* --------------------------------------------------
@@ -341,6 +473,10 @@ def inject_custom_css() -> None:
                 .hero-title {
                     font-size: 1.9rem;
                 }
+
+                .hero-desc {
+                    max-width: 100%;
+                }
             }
 
             @media (max-width: 900px) {
@@ -351,6 +487,7 @@ def inject_custom_css() -> None:
 
                 .hero-box {
                     padding: 1.7rem 1.4rem 1.45rem 1.4rem;
+                    border-radius: 22px;
                 }
 
                 .hero-title {
