@@ -64,15 +64,14 @@ def inject_custom_css() -> None:
             }
 
             .stApp {
-                background:
-                    radial-gradient(circle at top right, rgba(173, 205, 227, 0.20), transparent 28%),
-                    linear-gradient(180deg, #f7fafc 0%, #f4f8fb 100%);
+                background: #ffffff;
             }
 
             .block-container {
                 padding-top: 2.65rem;
                 padding-bottom: 2.2rem;
                 max-width: 1240px;
+                background: #ffffff;
             }
 
             h1, h2, h3, h4 {
@@ -99,6 +98,7 @@ def inject_custom_css() -> None:
             [data-testid="stSidebar"] .block-container {
                 padding-top: 2.05rem;
                 padding-bottom: 1.5rem;
+                background: transparent;
             }
 
             /* --------------------------------------------------
@@ -443,7 +443,7 @@ def inject_custom_css() -> None:
                Plotly / Charts 주변 여백 정리
             -------------------------------------------------- */
             [data-testid="stPlotlyChart"] {
-                background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+                background: #ffffff;
                 border: 1px solid #dce8f1;
                 border-radius: 18px;
                 padding: 0.45rem 0.45rem 0.2rem 0.45rem;
