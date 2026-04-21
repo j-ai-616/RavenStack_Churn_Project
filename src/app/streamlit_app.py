@@ -96,7 +96,7 @@ def inject_custom_css() -> None:
             }
 
             [data-testid="stSidebar"] .block-container {
-                padding-top: 2.05rem;
+                padding-top: 2.15rem;
                 padding-bottom: 1.5rem;
                 background: transparent;
             }
@@ -112,7 +112,7 @@ def inject_custom_css() -> None:
                 color: #ffffff;
                 padding: 2.2rem 2rem 1.8rem 2rem;
                 border-radius: 28px;
-                margin-top: 0.15rem;
+                margin-top: 0.85rem;
                 margin-bottom: 1.45rem;
                 box-shadow: 0 18px 40px rgba(123, 164, 195, 0.20);
                 border: 1px solid rgba(255, 255, 255, 0.42);
