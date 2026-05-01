@@ -16,6 +16,7 @@
 - 운영 최적 threshold: 0.45
 - 최고 F1: 0.433
 - 배포: [🔗 Streamlit 대시보드](https://ravenstack-churn-project.streamlit.app)
+- 전자책: [프로젝트 기술서 바로가기](https://wikidocs.net/book/19571)
 
 ---
 
