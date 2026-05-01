@@ -17,10 +17,8 @@
 - 최고 F1: 0.433
 - 배포: [🔗 Streamlit 대시보드](https://ravenstack-churn-project.streamlit.app)
 - 전자책: [프로젝트 기술서 바로가기](https://wikidocs.net/book/19571)
-<p align="center">
   <img src="assets/images/03.png" alt="bookcover" width="320">
-</p>
-
+  
 ---
 
 ## 프로젝트가 해결하려는 문제
